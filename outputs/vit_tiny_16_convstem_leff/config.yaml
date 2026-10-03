@@ -1,0 +1,71 @@
+experiment:
+  name: vit_tiny_16_convstem_leff
+  seed: 42
+  output_dir: outputs
+  device: auto
+  num_threads: 0
+data:
+  root: data
+  size: 320px
+  download: true
+  image_size: 224
+  resize_size: 256
+  rrc_scale:
+  - 0.35
+  - 1.0
+  hflip_prob: 0.5
+  mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  std:
+  - 0.229
+  - 0.224
+  - 0.225
+  num_classes: 10
+  batch_size: 32
+  num_workers: 8
+  pin_memory: false
+model:
+  arch: ViT-Tiny_16
+  stem: conv
+  in_channels: 3
+  patch_size: 16
+  embed_dim: 64
+  num_heads: 4
+  depth: 4
+  mlp_hidden: 128
+  mlp_type: leff
+  leff_kernel_size: 3
+  qkv_bias: true
+  attn_dropout: 0.0
+  dropout: 0.1
+  head_hidden: 0
+  conv_stem_channels:
+  - 24
+  - 48
+  - 64
+  - 64
+  init_std: 0.02
+loss:
+  name: cross_entropy
+  label_smoothing: 0.1
+optimizer:
+  name: adamw
+  lr: 0.0003
+  weight_decay: 0.05
+  betas:
+  - 0.9
+  - 0.999
+scheduler:
+  name: cosine
+  warmup_epochs: 2
+  min_lr: 1.0e-06
+train:
+  epochs: 20
+  grad_clip: 1.0
+  log_every: 50
+  eval_before_training: true
+visualize:
+  num_images: 2
+  head_fusion: mean

@@ -1,0 +1,7 @@
+# Dataset Imagenette (~340 MB nén, tự tải lại khi chạy train.py)
+data/
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

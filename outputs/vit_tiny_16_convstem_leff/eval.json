@@ -1,0 +1,20 @@
+{
+  "run": "vit_tiny_16_convstem_leff",
+  "checkpoint": "best.pt",
+  "epoch": 18,
+  "test_loss": 1.0371077920221219,
+  "test_acc": 77.73248408858184,
+  "test_acc5": 97.55414013042571,
+  "per_class_acc": {
+    "tench": 90.9560775756836,
+    "English springer": 87.08860778808594,
+    "cassette player": 77.59103393554688,
+    "chain saw": 59.84455871582031,
+    "church": 76.28361511230469,
+    "French horn": 81.97969818115234,
+    "garbage truck": 84.31877136230469,
+    "gas pump": 65.63245391845703,
+    "golf ball": 75.4385986328125,
+    "parachute": 78.97435760498047
+  }
+}

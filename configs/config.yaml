@@ -1,0 +1,78 @@
+# =====================================================================
+#  ViT-Tiny_16 trên Imagenette — FILE CẤU HÌNH DUY NHẤT của dự án
+# ---------------------------------------------------------------------
+#  Mọi hyperparameter đều nằm ở đây; không file .py nào hardcode giá trị.
+#  configs/config.py đọc file này thành các dataclass có kiểu rõ ràng,
+#  rồi train.py / eval.py truyền từng nhóm xuống dataloader, model, loss,
+#  optimizer.
+#
+#  Ghi đè nhanh từ dòng lệnh (không cần sửa file):
+#     python train.py --set model.stem=conv experiment.name=vit_tiny_16_convstem
+# =====================================================================
+
+experiment:
+  name: vit_tiny_16          # tên run -> kết quả lưu ở <output_dir>/<name>/
+  seed: 42
+  output_dir: outputs
+  device: auto               # auto | cpu | cuda
+  num_threads: 0             # số luồng CPU cho PyTorch; 0 = để PyTorch tự chọn
+
+data:
+  root: data                 # thư mục chứa Imagenette (tự tải nếu chưa có)
+  size: "320px"              # bản Imagenette có cạnh ngắn = 320px
+  download: true
+  image_size: 224            # kích thước ảnh đưa vào model (224 x 224)
+  resize_size: 256           # val:   Resize(256) -> CenterCrop(224)
+  rrc_scale: [0.35, 1.0]     # train: RandomResizedCrop(224, scale=rrc_scale)
+  hflip_prob: 0.5            # train: RandomHorizontalFlip
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  num_classes: 10
+  batch_size: 32
+  num_workers: 8
+  pin_memory: false
+
+model:
+  arch: ViT-Tiny_16          # quy ước ViT-{kích thước}_{patch size}
+  stem: linear               # linear = cắt patch 16x16 + nn.Linear (bản gốc)
+                             # conv   = Convolutional Stem (bản cải tiến)
+  in_channels: 3
+  patch_size: 16             # 224 / 16 = 14  ->  14 x 14 = 196 patch / ảnh
+  embed_dim: 64
+  num_heads: 4               # head_dim = 64 / 4 = 16
+  depth: 4                   # số TransformerBlock
+  mlp_hidden: 128
+  mlp_type: standard         # standard = Linear-GELU-Linear (bản gốc)
+                             # leff     = thêm DWConv kxk giữa fc1 và fc2 (locality trong mỗi block)
+  leff_kernel_size: 3        # kích thước kernel depthwise của LeFF (số lẻ)
+  qkv_bias: true
+  attn_dropout: 0.0
+  dropout: 0.1
+  head_hidden: 0             # 0 -> head = Linear(64, 10); >0 -> Linear-GELU-Linear
+  conv_stem_channels: [24, 48, 64, 64]   # 4 conv 3x3 stride 2: 224->112->56->28->14
+  init_std: 0.02
+
+loss:
+  name: cross_entropy
+  label_smoothing: 0.1
+
+optimizer:
+  name: adamw
+  lr: 3.0e-4
+  weight_decay: 0.05
+  betas: [0.9, 0.999]
+
+scheduler:
+  name: cosine               # cosine (có warmup) | none (lr cố định)
+  warmup_epochs: 2
+  min_lr: 1.0e-6
+
+train:
+  epochs: 20
+  grad_clip: 1.0             # 0 = tắt gradient clipping
+  log_every: 50              # in loss mỗi N iteration (iteration 1 luôn được in)
+  eval_before_training: true # đánh giá model ngẫu nhiên ở "epoch 0" -> bằng chứng train from scratch
+
+visualize:
+  num_images: 2              # số ảnh val để chồng attention map của [CLS]
+  head_fusion: mean          # gộp các head: mean | max

@@ -1,0 +1,180 @@
+21:24:54 | Run 'vit_tiny_16' | ViT-Tiny_16 | stem=linear | device=cpu
+21:24:54 | Dữ liệu: 9469 ảnh train, 3925 ảnh val, 295 iter/epoch, batch_size=32
+21:24:54 | Số tham số: stem=49,216, tokens=12,672, blocks=133,888, norm=128, head=650, total=196,554
+21:25:19 | Luồng shape qua model:
+module            loại                       shape vào         shape ra    
+----------------  -------------------------  ----------------  ------------
+stem.proj         Linear                     (2, 196, 768)     (2, 196, 64)
+stem              PatchEmbedding             (2, 3, 224, 224)  (2, 196, 64)
+tokens.pos_embed  Embedding                  (197,)            (197, 64)   
+tokens.dropout    Dropout                    (2, 197, 64)      (2, 197, 64)
+tokens            ClsTokenPositionEmbedding  (2, 196, 64)      (2, 197, 64)
+blocks.0          TransformerBlock           (2, 197, 64)      (2, 197, 64)
+blocks.1          TransformerBlock           (2, 197, 64)      (2, 197, 64)
+blocks.2          TransformerBlock           (2, 197, 64)      (2, 197, 64)
+blocks.3          TransformerBlock           (2, 197, 64)      (2, 197, 64)
+norm              LayerNorm                  (2, 197, 64)      (2, 197, 64)
+head.net          Linear                     (2, 64)           (2, 10)     
+head              ClassifierHead             (2, 64)           (2, 10)     
+21:25:27 | epoch  0 (khởi tạo ngẫu nhiên, chưa train) | val loss 2.3450 | val acc 5.02% | val acc5 48.33%
+21:25:47 | epoch  1/20 | iter    1/295 | loss 2.2930 (avg 2.2930) | acc avg  6.25% | lr 1.02e-06 | 20.64s/iter
+21:25:58 | epoch  1/20 | iter   50/295 | loss 2.2959 (avg 2.3234) | acc avg  9.75% | lr 2.59e-05 | 0.62s/iter
+21:26:08 | epoch  1/20 | iter  100/295 | loss 2.1878 (avg 2.2852) | acc avg 14.34% | lr 5.14e-05 | 0.41s/iter
+21:26:18 | epoch  1/20 | iter  150/295 | loss 2.1710 (avg 2.2555) | acc avg 17.75% | lr 7.68e-05 | 0.34s/iter
+21:26:28 | epoch  1/20 | iter  200/295 | loss 2.1925 (avg 2.2371) | acc avg 19.25% | lr 1.02e-04 | 0.31s/iter
+21:26:39 | epoch  1/20 | iter  250/295 | loss 2.0477 (avg 2.2225) | acc avg 20.14% | lr 1.28e-04 | 0.29s/iter
+21:26:48 | epoch  1/20 | iter  295/295 | loss 2.1294 (avg 2.2068) | acc avg 21.37% | lr 1.51e-04 | 0.28s/iter
+21:26:53 | ==> epoch  1/20 | train loss 2.2068 acc 21.37% | val loss 2.1223 acc 26.70% acc5 73.10% | best 26.70% | 81s  *best*
+21:26:53 | epoch  2/20 | iter    1/295 | loss 2.2096 (avg 2.2096) | acc avg 21.88% | lr 1.51e-04 | 0.38s/iter
+21:27:03 | epoch  2/20 | iter   50/295 | loss 1.9374 (avg 2.1072) | acc avg 27.38% | lr 1.76e-04 | 0.21s/iter
+21:27:14 | epoch  2/20 | iter  100/295 | loss 2.1453 (avg 2.1164) | acc avg 27.06% | lr 2.01e-04 | 0.21s/iter
+21:27:24 | epoch  2/20 | iter  150/295 | loss 2.0724 (avg 2.1073) | acc avg 27.38% | lr 2.27e-04 | 0.21s/iter
+21:27:34 | epoch  2/20 | iter  200/295 | loss 1.9234 (avg 2.0957) | acc avg 28.08% | lr 2.52e-04 | 0.21s/iter
+21:27:45 | epoch  2/20 | iter  250/295 | loss 1.9768 (avg 2.0824) | acc avg 28.54% | lr 2.78e-04 | 0.21s/iter
+21:27:54 | epoch  2/20 | iter  295/295 | loss 1.8565 (avg 2.0655) | acc avg 29.76% | lr 3.00e-04 | 0.21s/iter
+21:27:59 | ==> epoch  2/20 | train loss 2.0655 acc 29.76% | val loss 1.9719 acc 36.51% acc5 82.01% | best 36.51% | 61s  *best*
+21:28:00 | epoch  3/20 | iter    1/295 | loss 1.9121 (avg 1.9121) | acc avg 28.12% | lr 3.00e-04 | 0.44s/iter
+21:28:10 | epoch  3/20 | iter   50/295 | loss 2.0359 (avg 1.9534) | acc avg 36.31% | lr 3.00e-04 | 0.22s/iter
+21:28:21 | epoch  3/20 | iter  100/295 | loss 1.7353 (avg 1.9457) | acc avg 36.44% | lr 3.00e-04 | 0.22s/iter
+21:28:32 | epoch  3/20 | iter  150/295 | loss 1.9755 (avg 1.9401) | acc avg 36.46% | lr 2.99e-04 | 0.22s/iter
+21:28:44 | epoch  3/20 | iter  200/295 | loss 1.8101 (avg 1.9298) | acc avg 36.64% | lr 2.99e-04 | 0.22s/iter
+21:28:56 | epoch  3/20 | iter  250/295 | loss 1.8638 (avg 1.9281) | acc avg 36.70% | lr 2.98e-04 | 0.23s/iter
+21:29:06 | epoch  3/20 | iter  295/295 | loss 1.8215 (avg 1.9163) | acc avg 37.48% | lr 2.98e-04 | 0.22s/iter
+21:29:11 | ==> epoch  3/20 | train loss 1.9163 acc 37.48% | val loss 1.8656 acc 39.95% acc5 84.36% | best 39.95% | 66s  *best*
+21:29:11 | epoch  4/20 | iter    1/295 | loss 1.7357 (avg 1.7357) | acc avg 56.25% | lr 2.98e-04 | 0.40s/iter
+21:29:22 | epoch  4/20 | iter   50/295 | loss 1.7945 (avg 1.8432) | acc avg 40.50% | lr 2.97e-04 | 0.23s/iter
+21:29:34 | epoch  4/20 | iter  100/295 | loss 1.9284 (avg 1.8407) | acc avg 41.59% | lr 2.96e-04 | 0.24s/iter
+21:29:47 | epoch  4/20 | iter  150/295 | loss 1.6776 (avg 1.8339) | acc avg 41.52% | lr 2.95e-04 | 0.24s/iter
+21:29:59 | epoch  4/20 | iter  200/295 | loss 1.9824 (avg 1.8265) | acc avg 41.84% | lr 2.94e-04 | 0.24s/iter
+21:30:10 | epoch  4/20 | iter  250/295 | loss 1.6959 (avg 1.8179) | acc avg 42.42% | lr 2.92e-04 | 0.24s/iter
+21:30:19 | epoch  4/20 | iter  295/295 | loss 1.6234 (avg 1.8138) | acc avg 42.70% | lr 2.91e-04 | 0.23s/iter
+21:30:24 | ==> epoch  4/20 | train loss 1.8138 acc 42.70% | val loss 1.7458 acc 47.03% acc5 87.77% | best 47.03% | 69s  *best*
+21:30:24 | epoch  5/20 | iter    1/295 | loss 1.9032 (avg 1.9032) | acc avg 40.62% | lr 2.91e-04 | 0.40s/iter
+21:30:35 | epoch  5/20 | iter   50/295 | loss 1.7116 (avg 1.7469) | acc avg 45.69% | lr 2.89e-04 | 0.21s/iter
+21:30:46 | epoch  5/20 | iter  100/295 | loss 1.6856 (avg 1.7684) | acc avg 44.38% | lr 2.88e-04 | 0.22s/iter
+21:30:58 | epoch  5/20 | iter  150/295 | loss 1.7646 (avg 1.7592) | acc avg 44.75% | lr 2.86e-04 | 0.23s/iter
+21:31:08 | epoch  5/20 | iter  200/295 | loss 1.7583 (avg 1.7502) | acc avg 44.97% | lr 2.84e-04 | 0.22s/iter
+21:31:19 | epoch  5/20 | iter  250/295 | loss 1.8020 (avg 1.7507) | acc avg 45.15% | lr 2.82e-04 | 0.22s/iter
+21:31:28 | epoch  5/20 | iter  295/295 | loss 1.6675 (avg 1.7493) | acc avg 45.31% | lr 2.80e-04 | 0.22s/iter
+21:31:32 | ==> epoch  5/20 | train loss 1.7493 acc 45.31% | val loss 1.7265 acc 47.52% acc5 87.77% | best 47.52% | 64s  *best*
+21:31:33 | epoch  6/20 | iter    1/295 | loss 1.7382 (avg 1.7382) | acc avg 40.62% | lr 2.80e-04 | 0.39s/iter
+21:31:43 | epoch  6/20 | iter   50/295 | loss 1.8350 (avg 1.7238) | acc avg 47.00% | lr 2.78e-04 | 0.21s/iter
+21:31:53 | epoch  6/20 | iter  100/295 | loss 1.8434 (avg 1.7133) | acc avg 48.16% | lr 2.75e-04 | 0.20s/iter
+21:32:03 | epoch  6/20 | iter  150/295 | loss 1.8361 (avg 1.7150) | acc avg 47.73% | lr 2.73e-04 | 0.20s/iter
+21:32:13 | epoch  6/20 | iter  200/295 | loss 1.7210 (avg 1.7176) | acc avg 47.27% | lr 2.70e-04 | 0.20s/iter
+21:32:23 | epoch  6/20 | iter  250/295 | loss 1.6692 (avg 1.7132) | acc avg 47.40% | lr 2.68e-04 | 0.20s/iter
+21:32:32 | epoch  6/20 | iter  295/295 | loss 1.7182 (avg 1.7049) | acc avg 47.38% | lr 2.65e-04 | 0.20s/iter
+21:32:37 | ==> epoch  6/20 | train loss 1.7049 acc 47.38% | val loss 1.6669 acc 49.50% acc5 89.07% | best 49.50% | 59s  *best*
+21:32:37 | epoch  7/20 | iter    1/295 | loss 1.7263 (avg 1.7263) | acc avg 43.75% | lr 2.65e-04 | 0.37s/iter
+21:32:47 | epoch  7/20 | iter   50/295 | loss 1.4881 (avg 1.6790) | acc avg 50.06% | lr 2.62e-04 | 0.21s/iter
+21:32:57 | epoch  7/20 | iter  100/295 | loss 1.8009 (avg 1.6748) | acc avg 49.06% | lr 2.59e-04 | 0.20s/iter
+21:33:07 | epoch  7/20 | iter  150/295 | loss 1.5011 (avg 1.6666) | acc avg 49.38% | lr 2.56e-04 | 0.20s/iter
+21:33:17 | epoch  7/20 | iter  200/295 | loss 1.4791 (avg 1.6550) | acc avg 50.14% | lr 2.53e-04 | 0.20s/iter
+21:33:27 | epoch  7/20 | iter  250/295 | loss 1.4889 (avg 1.6487) | acc avg 50.33% | lr 2.50e-04 | 0.20s/iter
+21:33:36 | epoch  7/20 | iter  295/295 | loss 1.7388 (avg 1.6447) | acc avg 50.66% | lr 2.47e-04 | 0.20s/iter
+21:33:41 | ==> epoch  7/20 | train loss 1.6447 acc 50.66% | val loss 1.5866 acc 53.38% acc5 91.46% | best 53.38% | 60s  *best*
+21:33:41 | epoch  8/20 | iter    1/295 | loss 1.5495 (avg 1.5495) | acc avg 56.25% | lr 2.47e-04 | 0.36s/iter
+21:33:51 | epoch  8/20 | iter   50/295 | loss 1.2346 (avg 1.5734) | acc avg 54.81% | lr 2.43e-04 | 0.21s/iter
+21:34:01 | epoch  8/20 | iter  100/295 | loss 1.6076 (avg 1.5940) | acc avg 52.62% | lr 2.40e-04 | 0.20s/iter
+21:34:12 | epoch  8/20 | iter  150/295 | loss 1.5262 (avg 1.5964) | acc avg 52.67% | lr 2.36e-04 | 0.21s/iter
+21:34:22 | epoch  8/20 | iter  200/295 | loss 1.5729 (avg 1.5881) | acc avg 52.91% | lr 2.32e-04 | 0.20s/iter
+21:34:32 | epoch  8/20 | iter  250/295 | loss 1.6887 (avg 1.5889) | acc avg 52.86% | lr 2.29e-04 | 0.20s/iter
+21:34:41 | epoch  8/20 | iter  295/295 | loss 1.5424 (avg 1.5909) | acc avg 52.96% | lr 2.25e-04 | 0.20s/iter
+21:34:46 | ==> epoch  8/20 | train loss 1.5909 acc 52.96% | val loss 1.5242 acc 57.17% acc5 92.05% | best 57.17% | 60s  *best*
+21:34:46 | epoch  9/20 | iter    1/295 | loss 1.7710 (avg 1.7710) | acc avg 43.75% | lr 2.25e-04 | 0.34s/iter
+21:34:56 | epoch  9/20 | iter   50/295 | loss 1.4568 (avg 1.5289) | acc avg 55.00% | lr 2.21e-04 | 0.21s/iter
+21:35:06 | epoch  9/20 | iter  100/295 | loss 1.3549 (avg 1.5496) | acc avg 54.06% | lr 2.17e-04 | 0.21s/iter
+21:35:17 | epoch  9/20 | iter  150/295 | loss 1.5061 (avg 1.5477) | acc avg 54.21% | lr 2.13e-04 | 0.21s/iter
+21:35:28 | epoch  9/20 | iter  200/295 | loss 1.4418 (avg 1.5565) | acc avg 54.02% | lr 2.09e-04 | 0.21s/iter
+21:35:39 | epoch  9/20 | iter  250/295 | loss 1.7528 (avg 1.5567) | acc avg 54.12% | lr 2.05e-04 | 0.21s/iter
+21:35:48 | epoch  9/20 | iter  295/295 | loss 1.6650 (avg 1.5539) | acc avg 54.31% | lr 2.02e-04 | 0.21s/iter
+21:35:53 | ==> epoch  9/20 | train loss 1.5539 acc 54.31% | val loss 1.5272 acc 55.64% acc5 92.66% | best 57.17% | 63s
+21:35:54 | epoch 10/20 | iter    1/295 | loss 1.4391 (avg 1.4391) | acc avg 59.38% | lr 2.02e-04 | 0.40s/iter
+21:36:05 | epoch 10/20 | iter   50/295 | loss 1.8280 (avg 1.5538) | acc avg 54.56% | lr 1.97e-04 | 0.23s/iter
+21:36:17 | epoch 10/20 | iter  100/295 | loss 1.4485 (avg 1.5326) | acc avg 55.62% | lr 1.93e-04 | 0.23s/iter
+21:36:28 | epoch 10/20 | iter  150/295 | loss 1.5824 (avg 1.5283) | acc avg 55.83% | lr 1.89e-04 | 0.23s/iter
+21:36:40 | epoch 10/20 | iter  200/295 | loss 1.4257 (avg 1.5332) | acc avg 55.23% | lr 1.85e-04 | 0.23s/iter
+21:36:52 | epoch 10/20 | iter  250/295 | loss 1.4015 (avg 1.5280) | acc avg 55.54% | lr 1.80e-04 | 0.24s/iter
+21:37:02 | epoch 10/20 | iter  295/295 | loss 1.7689 (avg 1.5344) | acc avg 55.25% | lr 1.76e-04 | 0.23s/iter
+21:37:07 | ==> epoch 10/20 | train loss 1.5344 acc 55.25% | val loss 1.5025 acc 58.01% acc5 92.41% | best 58.01% | 69s  *best*
+21:37:08 | epoch 11/20 | iter    1/295 | loss 1.4548 (avg 1.4548) | acc avg 65.62% | lr 1.76e-04 | 0.48s/iter
+21:37:19 | epoch 11/20 | iter   50/295 | loss 1.4068 (avg 1.4744) | acc avg 59.81% | lr 1.72e-04 | 0.24s/iter
+21:37:31 | epoch 11/20 | iter  100/295 | loss 1.4627 (avg 1.4920) | acc avg 58.09% | lr 1.68e-04 | 0.24s/iter
+21:37:42 | epoch 11/20 | iter  150/295 | loss 1.4800 (avg 1.4924) | acc avg 57.69% | lr 1.63e-04 | 0.23s/iter
+21:37:55 | epoch 11/20 | iter  200/295 | loss 1.4351 (avg 1.4884) | acc avg 57.88% | lr 1.59e-04 | 0.24s/iter
+21:38:07 | epoch 11/20 | iter  250/295 | loss 1.3097 (avg 1.4942) | acc avg 57.42% | lr 1.54e-04 | 0.24s/iter
+21:38:18 | epoch 11/20 | iter  295/295 | loss 1.8458 (avg 1.4937) | acc avg 57.63% | lr 1.50e-04 | 0.24s/iter
+21:38:23 | ==> epoch 11/20 | train loss 1.4937 acc 57.63% | val loss 1.5003 acc 57.61% acc5 92.36% | best 58.01% | 71s
+21:38:23 | epoch 12/20 | iter    1/295 | loss 1.4944 (avg 1.4944) | acc avg 56.25% | lr 1.50e-04 | 0.38s/iter
+21:38:35 | epoch 12/20 | iter   50/295 | loss 1.0504 (avg 1.4938) | acc avg 56.50% | lr 1.46e-04 | 0.25s/iter
+21:38:47 | epoch 12/20 | iter  100/295 | loss 1.3435 (avg 1.5056) | acc avg 56.06% | lr 1.42e-04 | 0.24s/iter
+21:38:58 | epoch 12/20 | iter  150/295 | loss 1.7234 (avg 1.4939) | acc avg 57.23% | lr 1.37e-04 | 0.23s/iter
+21:39:09 | epoch 12/20 | iter  200/295 | loss 1.6015 (avg 1.4784) | acc avg 58.33% | lr 1.33e-04 | 0.23s/iter
+21:39:20 | epoch 12/20 | iter  250/295 | loss 1.5004 (avg 1.4791) | acc avg 57.84% | lr 1.28e-04 | 0.23s/iter
+21:39:30 | epoch 12/20 | iter  295/295 | loss 1.3772 (avg 1.4774) | acc avg 57.86% | lr 1.25e-04 | 0.23s/iter
+21:39:36 | ==> epoch 12/20 | train loss 1.4774 acc 57.86% | val loss 1.4549 acc 59.21% acc5 93.20% | best 59.21% | 67s  *best*
+21:39:36 | epoch 13/20 | iter    1/295 | loss 1.3983 (avg 1.3983) | acc avg 62.50% | lr 1.24e-04 | 0.45s/iter
+21:39:46 | epoch 13/20 | iter   50/295 | loss 1.5561 (avg 1.4857) | acc avg 56.50% | lr 1.20e-04 | 0.21s/iter
+21:39:57 | epoch 13/20 | iter  100/295 | loss 1.3899 (avg 1.4586) | acc avg 58.44% | lr 1.16e-04 | 0.21s/iter
+21:40:07 | epoch 13/20 | iter  150/295 | loss 1.2688 (avg 1.4561) | acc avg 58.77% | lr 1.12e-04 | 0.21s/iter
+21:40:14 | epoch 13/20 | iter  200/295 | loss 1.4574 (avg 1.4458) | acc avg 58.86% | lr 1.07e-04 | 0.19s/iter
+21:40:21 | epoch 13/20 | iter  250/295 | loss 1.2953 (avg 1.4506) | acc avg 58.80% | lr 1.03e-04 | 0.18s/iter
+21:40:30 | epoch 13/20 | iter  295/295 | loss 1.3983 (avg 1.4501) | acc avg 59.00% | lr 9.94e-05 | 0.19s/iter
+21:40:35 | ==> epoch 13/20 | train loss 1.4501 acc 59.00% | val loss 1.4191 acc 60.79% acc5 93.83% | best 60.79% | 55s  *best*
+21:40:36 | epoch 14/20 | iter    1/295 | loss 1.7257 (avg 1.7257) | acc avg 50.00% | lr 9.93e-05 | 0.40s/iter
+21:40:46 | epoch 14/20 | iter   50/295 | loss 1.3796 (avg 1.4392) | acc avg 60.44% | lr 9.52e-05 | 0.22s/iter
+21:40:57 | epoch 14/20 | iter  100/295 | loss 1.2956 (avg 1.4263) | acc avg 60.34% | lr 9.12e-05 | 0.22s/iter
+21:41:08 | epoch 14/20 | iter  150/295 | loss 1.3743 (avg 1.4500) | acc avg 58.90% | lr 8.71e-05 | 0.21s/iter
+21:41:18 | epoch 14/20 | iter  200/295 | loss 1.4613 (avg 1.4398) | acc avg 59.64% | lr 8.31e-05 | 0.21s/iter
+21:41:29 | epoch 14/20 | iter  250/295 | loss 1.6887 (avg 1.4442) | acc avg 59.36% | lr 7.92e-05 | 0.21s/iter
+21:41:38 | epoch 14/20 | iter  295/295 | loss 1.6051 (avg 1.4476) | acc avg 59.31% | lr 7.58e-05 | 0.21s/iter
+21:41:43 | ==> epoch 14/20 | train loss 1.4476 acc 59.31% | val loss 1.3936 acc 62.34% acc5 94.19% | best 62.34% | 63s  *best*
+21:41:43 | epoch 15/20 | iter    1/295 | loss 1.5404 (avg 1.5404) | acc avg 50.00% | lr 7.57e-05 | 0.38s/iter
+21:41:53 | epoch 15/20 | iter   50/295 | loss 1.7414 (avg 1.4098) | acc avg 61.19% | lr 7.20e-05 | 0.21s/iter
+21:42:04 | epoch 15/20 | iter  100/295 | loss 1.4723 (avg 1.4180) | acc avg 60.62% | lr 6.82e-05 | 0.21s/iter
+21:42:13 | epoch 15/20 | iter  150/295 | loss 1.4379 (avg 1.4100) | acc avg 60.69% | lr 6.46e-05 | 0.20s/iter
+21:42:20 | epoch 15/20 | iter  200/295 | loss 1.2182 (avg 1.4217) | acc avg 60.58% | lr 6.10e-05 | 0.19s/iter
+21:42:27 | epoch 15/20 | iter  250/295 | loss 1.5047 (avg 1.4212) | acc avg 60.56% | lr 5.75e-05 | 0.18s/iter
+21:42:33 | epoch 15/20 | iter  295/295 | loss 1.4298 (avg 1.4199) | acc avg 60.64% | lr 5.44e-05 | 0.17s/iter
+21:42:37 | ==> epoch 15/20 | train loss 1.4199 acc 60.64% | val loss 1.3797 acc 62.93% acc5 94.06% | best 62.93% | 50s  *best*
+21:42:37 | epoch 16/20 | iter    1/295 | loss 1.2673 (avg 1.2673) | acc avg 68.75% | lr 5.43e-05 | 0.29s/iter
+21:42:44 | epoch 16/20 | iter   50/295 | loss 1.2726 (avg 1.3986) | acc avg 62.12% | lr 5.11e-05 | 0.14s/iter
+21:42:51 | epoch 16/20 | iter  100/295 | loss 1.4746 (avg 1.3864) | acc avg 63.19% | lr 4.78e-05 | 0.14s/iter
+21:42:58 | epoch 16/20 | iter  150/295 | loss 1.3624 (avg 1.3857) | acc avg 62.98% | lr 4.46e-05 | 0.14s/iter
+21:43:05 | epoch 16/20 | iter  200/295 | loss 1.3639 (avg 1.3927) | acc avg 62.20% | lr 4.16e-05 | 0.14s/iter
+21:43:12 | epoch 16/20 | iter  250/295 | loss 1.4070 (avg 1.4030) | acc avg 61.75% | lr 3.86e-05 | 0.14s/iter
+21:43:20 | epoch 16/20 | iter  295/295 | loss 1.2402 (avg 1.4027) | acc avg 61.81% | lr 3.60e-05 | 0.15s/iter
+21:43:25 | ==> epoch 16/20 | train loss 1.4027 acc 61.81% | val loss 1.3815 acc 63.13% acc5 94.09% | best 63.13% | 43s  *best*
+21:43:26 | epoch 17/20 | iter    1/295 | loss 1.3171 (avg 1.3171) | acc avg 62.50% | lr 3.59e-05 | 0.39s/iter
+21:43:36 | epoch 17/20 | iter   50/295 | loss 1.3112 (avg 1.4109) | acc avg 60.62% | lr 3.32e-05 | 0.21s/iter
+21:43:47 | epoch 17/20 | iter  100/295 | loss 1.2721 (avg 1.4052) | acc avg 60.38% | lr 3.05e-05 | 0.21s/iter
+21:43:57 | epoch 17/20 | iter  150/295 | loss 1.2319 (avg 1.4064) | acc avg 60.77% | lr 2.79e-05 | 0.21s/iter
+21:44:07 | epoch 17/20 | iter  200/295 | loss 1.4265 (avg 1.4038) | acc avg 61.02% | lr 2.54e-05 | 0.21s/iter
+21:44:18 | epoch 17/20 | iter  250/295 | loss 1.2708 (avg 1.3983) | acc avg 61.31% | lr 2.31e-05 | 0.21s/iter
+21:44:28 | epoch 17/20 | iter  295/295 | loss 1.3952 (avg 1.4000) | acc avg 61.27% | lr 2.10e-05 | 0.21s/iter
+21:44:33 | ==> epoch 17/20 | train loss 1.4000 acc 61.27% | val loss 1.3721 acc 63.49% acc5 94.39% | best 63.49% | 62s  *best*
+21:44:33 | epoch 18/20 | iter    1/295 | loss 1.3267 (avg 1.3267) | acc avg 59.38% | lr 2.10e-05 | 0.41s/iter
+21:44:43 | epoch 18/20 | iter   50/295 | loss 1.2146 (avg 1.4131) | acc avg 59.94% | lr 1.89e-05 | 0.22s/iter
+21:44:54 | epoch 18/20 | iter  100/295 | loss 1.6087 (avg 1.3912) | acc avg 61.78% | lr 1.68e-05 | 0.21s/iter
+21:45:04 | epoch 18/20 | iter  150/295 | loss 1.4191 (avg 1.3989) | acc avg 61.15% | lr 1.49e-05 | 0.21s/iter
+21:45:15 | epoch 18/20 | iter  200/295 | loss 1.2366 (avg 1.3924) | acc avg 61.67% | lr 1.31e-05 | 0.21s/iter
+21:45:26 | epoch 18/20 | iter  250/295 | loss 1.3671 (avg 1.3873) | acc avg 61.96% | lr 1.14e-05 | 0.21s/iter
+21:45:35 | epoch 18/20 | iter  295/295 | loss 1.5163 (avg 1.3830) | acc avg 62.24% | lr 1.00e-05 | 0.21s/iter
+21:45:40 | ==> epoch 18/20 | train loss 1.3830 acc 62.24% | val loss 1.3657 acc 63.62% acc5 94.19% | best 63.62% | 63s  *best*
+21:45:40 | epoch 19/20 | iter    1/295 | loss 1.2318 (avg 1.2318) | acc avg 65.62% | lr 9.99e-06 | 0.37s/iter
+21:45:51 | epoch 19/20 | iter   50/295 | loss 1.3383 (avg 1.3914) | acc avg 62.69% | lr 8.57e-06 | 0.22s/iter
+21:46:02 | epoch 19/20 | iter  100/295 | loss 1.2866 (avg 1.3751) | acc avg 62.91% | lr 7.24e-06 | 0.22s/iter
+21:46:13 | epoch 19/20 | iter  150/295 | loss 1.4851 (avg 1.3712) | acc avg 62.85% | lr 6.04e-06 | 0.22s/iter
+21:46:26 | epoch 19/20 | iter  200/295 | loss 1.4407 (avg 1.3713) | acc avg 62.75% | lr 4.96e-06 | 0.23s/iter
+21:46:37 | epoch 19/20 | iter  250/295 | loss 1.6084 (avg 1.3752) | acc avg 62.66% | lr 4.01e-06 | 0.23s/iter
+21:46:47 | epoch 19/20 | iter  295/295 | loss 1.0390 (avg 1.3775) | acc avg 62.44% | lr 3.27e-06 | 0.23s/iter
+21:46:52 | ==> epoch 19/20 | train loss 1.3775 acc 62.44% | val loss 1.3633 acc 63.75% acc5 94.04% | best 63.75% | 67s  *best*
+21:46:53 | epoch 20/20 | iter    1/295 | loss 1.4315 (avg 1.4315) | acc avg 62.50% | lr 3.26e-06 | 0.45s/iter
+21:47:04 | epoch 20/20 | iter   50/295 | loss 1.3549 (avg 1.3978) | acc avg 60.50% | lr 2.57e-06 | 0.24s/iter
+21:47:15 | epoch 20/20 | iter  100/295 | loss 1.1842 (avg 1.3927) | acc avg 61.19% | lr 1.99e-06 | 0.23s/iter
+21:47:22 | epoch 20/20 | iter  150/295 | loss 1.4718 (avg 1.3982) | acc avg 61.08% | lr 1.55e-06 | 0.20s/iter
+21:47:32 | epoch 20/20 | iter  200/295 | loss 1.1349 (avg 1.3915) | acc avg 61.52% | lr 1.24e-06 | 0.20s/iter
+21:47:42 | epoch 20/20 | iter  250/295 | loss 1.3124 (avg 1.3874) | acc avg 61.54% | lr 1.05e-06 | 0.20s/iter
+21:47:51 | epoch 20/20 | iter  295/295 | loss 1.3717 (avg 1.3886) | acc avg 61.56% | lr 1.00e-06 | 0.20s/iter
+21:47:56 | ==> epoch 20/20 | train loss 1.3886 acc 61.56% | val loss 1.3615 acc 63.77% acc5 94.09% | best 63.77% | 59s  *best*
+21:47:56 | Xong 20 epoch trong 22.5 phút | best val acc 63.77% | kết quả ở outputs\vit_tiny_16
